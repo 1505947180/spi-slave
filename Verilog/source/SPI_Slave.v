@@ -34,7 +34,7 @@ module SPI_Slave
 
    // SPI Interface
    input      i_SPI_Clk,
-   output reg o_SPI_MISO,
+   output wire o_SPI_MISO,
    input      i_SPI_MOSI,
    input      i_SPI_CS_n
    );
@@ -135,7 +135,7 @@ module SPI_Slave
 
   // Control preload signal.  Should be 1 when CS is high, but as soon as
   // first clock edge is seen it goes low.
-  always @(posedge w_SPI_CLK or posedge i_SPI_CS_n)
+  always @(posedge w_SPI_Clk or posedge i_SPI_CS_n)
   begin
     if (i_SPI_CS_n)
     begin
